@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oferta – Sklep internetowy dla branży jubilerskiej | oskarminor.pl</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C6A96C;
+    --gold-light: #DCC99E;
+    --gold-dark: #9E844A;
+    --bg-deep: #0C0B0A;
+    --bg-card: #151413;
+    --bg-card-hover: #1A1918;
+    --text-primary: #F2EDE6;
+    --text-secondary: #9B958C;
+    --text-muted: #5E5952;
+    --border: #2A2724;
+    --border-gold: rgba(198, 169, 108, 0.2);
+    --accent-green: #7EAA6D;
+    --accent-rose: #C47A7A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    background: var(--bg-deep);
+  }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300;
+    color: var(--text-primary);
+    background: var(--bg-deep);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── Noise overlay ─── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  .container {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  /* ─── Hero ─── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 4rem 0;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -30%;
+    right: -20%;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(198, 169, 108, 0.06) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.3s;
+  }
+
+  .hero-badge::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    line-height: 1.15;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.5s;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-sub {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    max-width: 540px;
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.7s;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 3rem;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.9s;
+  }
+
+  .hero-meta-item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero-meta-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.3rem;
+  }
+
+  .hero-meta-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    color: var(--text-primary);
+  }
+
+  .hero-meta-value a {
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border-gold);
+    transition: border-color 0.3s;
+  }
+
+  .hero-meta-value a:hover {
+    border-color: var(--gold);
+  }
+
+  /* ─── Sections ─── */
+  section {
+    padding: 5rem 0;
+    position: relative;
+  }
+
+  section + section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(100%, 920px);
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+  }
+
+  .section-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+    margin-bottom: 1.5rem;
+  }
+
+  .section-label span {
+    color: var(--text-muted);
+    margin-right: 0.75rem;
+  }
+
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    line-height: 1.25;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+  }
+
+  h2 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .section-intro {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    max-width: 600px;
+    margin-bottom: 3rem;
+  }
+
+  /* ─── Recommendation Block ─── */
+  .reco-block {
+    background: linear-gradient(135deg, var(--bg-card), #1C1A17);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .reco-block::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .reco-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: rgba(198, 169, 108, 0.1);
+    border: 1px solid var(--border-gold);
+    color: var(--gold);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.9rem;
+    border-radius: 100px;
+    margin-bottom: 1.5rem;
+  }
+
+  .reco-badge::before {
+    content: '★';
+    font-size: 0.6rem;
+  }
+
+  .reco-block h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 1.7rem;
+    margin-bottom: 1rem;
+  }
+
+  .reco-block p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .reco-reasons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .reco-reason {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+  }
+
+  .reco-reason-icon {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background: rgba(198, 169, 108, 0.08);
+    border: 1px solid var(--border-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold);
+    font-size: 0.75rem;
+    margin-top: 0.1rem;
+  }
+
+  /* ─── Scope Grid ─── */
+  .scope-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+
+  .scope-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.75rem;
+    transition: all 0.4s ease;
+    position: relative;
+  }
+
+  .scope-card:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--border-gold);
+    transform: translateY(-2px);
+  }
+
+  .scope-card.featured {
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, rgba(198, 169, 108, 0.05), var(--bg-card));
+    border-color: var(--border-gold);
+  }
+
+  .scope-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    color: var(--gold-dark);
+    margin-bottom: 0.75rem;
+  }
+
+  .scope-card h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 1.15rem;
+    margin-bottom: 0.6rem;
+    color: var(--text-primary);
+  }
+
+  .scope-card p {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+
+  /* ─── Jewelry-Specific */
+  .jewel-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .jewel-feature {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .jewel-feature::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle at top right, rgba(198, 169, 108, 0.06), transparent);
+  }
+
+  .jewel-feature h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .jewel-feature p {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+  }
+
+  .jewel-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: rgba(198, 169, 108, 0.08);
+    border: 1px solid var(--border-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+  }
+
+  /* ─── Timeline ─── */
+  .timeline {
+    position: relative;
+    padding-left: 3rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 8px;
+    bottom: 8px;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--gold), var(--border), var(--gold));
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 2.5rem;
+  }
+
+  .timeline-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -3rem;
+    top: 8px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: var(--bg-deep);
+    border: 2px solid var(--gold-dark);
+    transform: translateX(calc(-50% + 7.5px));
+  }
+
+  .timeline-item.active::before {
+    background: var(--gold);
+    border-color: var(--gold);
+    box-shadow: 0 0 12px rgba(198, 169, 108, 0.4);
+  }
+
+  .timeline-week {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+    margin-bottom: 0.3rem;
+  }
+
+  .timeline-item h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 1.15rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .timeline-item p {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+  }
+
+  /* ─── Pricing ─── */
+  .pricing-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .price-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2.5rem;
+    position: relative;
+    transition: all 0.4s ease;
+  }
+
+  .price-card:hover {
+    border-color: var(--border-gold);
+  }
+
+  .price-card.recommended {
+    background: linear-gradient(160deg, #1C1A17, var(--bg-card));
+    border-color: var(--gold-dark);
+  }
+
+  .price-card.recommended::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .price-tier {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+  }
+
+  .price-card.recommended .price-tier {
+    color: var(--gold-dark);
+  }
+
+  .price-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+  }
+
+  .price-amount {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: var(--gold);
+    margin-bottom: 0.3rem;
+  }
+
+  .price-amount span {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--text-muted);
+  }
+
+  .price-note {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .price-features {
+    list-style: none;
+  }
+
+  .price-features li {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(42, 39, 36, 0.5);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .price-features li:last-child {
+    border-bottom: none;
+  }
+
+  .price-features li::before {
+    content: '◆';
+    color: var(--gold-dark);
+    font-size: 0.45rem;
+    flex-shrink: 0;
+  }
+
+  /* ─── CTA ─── */
+  .cta-section {
+    text-align: center;
+    padding: 6rem 0;
+  }
+
+  .cta-section h2 {
+    margin-bottom: 1rem;
+  }
+
+  .cta-section p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 2rem;
+    border-radius: 100px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-gold {
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    color: var(--bg-deep);
+  }
+
+  .btn-gold:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(198, 169, 108, 0.25);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+  }
+
+  .btn-outline:hover {
+    border-color: var(--gold-dark);
+    color: var(--gold);
+  }
+
+  /* ─── Footer ─── */
+  footer {
+    padding: 3rem 0;
+    text-align: center;
+    border-top: 1px solid var(--border);
+  }
+
+  footer p {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  footer a {
+    color: var(--gold-dark);
+    text-decoration: none;
+  }
+
+  /* ─── Animations ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── Diamond Divider ─── */
+  .diamond-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+
+  .diamond-divider::before,
+  .diamond-divider::after {
+    content: '';
+    flex: 1;
+    max-width: 80px;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .diamond-divider span {
+    color: var(--gold-dark);
+    font-size: 0.5rem;
+  }
+
+  /* ─── Responsive ─── */
+  @media (max-width: 700px) {
+    .scope-grid,
+    .reco-reasons,
+    .jewel-features,
+    .pricing-container {
+      grid-template-columns: 1fr;
+    }
+
+    .scope-card.featured {
+      grid-column: auto;
+    }
+
+    .hero-meta {
+      gap: 2rem;
+    }
+
+    .reco-block {
+      padding: 1.75rem;
+    }
+
+    .container {
+      padding: 0 1.25rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════ HERO ═══════ -->
+<header class="hero">
+  <div class="container">
+    <div class="hero-badge">oskarminor.pl — oferta indywidualna</div>
+    <h1>Nowoczesny sklep<br>internetowy dla branży<br><em>jubilerskiej</em></h1>
+    <p class="hero-sub">Kompleksowe wdrożenie platformy e-commerce z&nbsp;naciskiem na estetykę premium, intuicyjność i&nbsp;gotowość do skalowania. Od konfiguracji po szkolenie — pełna realizacja pod klucz.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Data oferty</span>
+        <span class="hero-meta-value">26 lutego 2026</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Ważność oferty</span>
+        <span class="hero-meta-value">30 dni</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Kontakt</span>
+        <span class="hero-meta-value"><a href="https://oskarminor.pl">oskarminor.pl</a></span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════ REKOMENDACJA PLATFORMY ═══════ -->
+<section>
+  <div class="container">
+    <div class="section-label"><span>01</span> Rekomendacja platformy</div>
+    <h2 class="reveal">Wybór <em>fundamentu</em></h2>
+    <p class="section-intro reveal">Na podstawie Państwa wymagań — 2&nbsp;sklepy stacjonarne, ~500 produktów, wariantowość, przyszła integracja stanów — rekomenduję dwa podejścia.</p>
+
+    <div class="reco-block reveal" style="margin-bottom: 1.5rem;">
+      <div class="reco-badge">Rekomendacja główna</div>
+      <h3>Shopify</h3>
+      <p>Najlepsza opcja dla branży jubilerskiej, która stawia na estetykę, stabilność i&nbsp;bezproblemowe skalowanie. Shopify oferuje najwyższą jakość szablonów premium, natywny system wariantów (rozmiary, próby kruszcu), wbudowane zabezpieczenia PCI DSS oraz rosnący ekosystem integracji z&nbsp;polskim rynkiem.</p>
+      <div class="reco-reasons">
+        <div class="reco-reason">
+          <div class="reco-reason-icon">✦</div>
+          <span>Szablony premium idealne dla branży luksusowej — natywna estetyka na najwyższym poziomie</span>
+        </div>
+        <div class="reco-reason">
+          <div class="reco-reason-icon">✦</div>
+          <span>Zero utrzymania technicznego — aktualizacje, bezpieczeństwo i&nbsp;hosting w&nbsp;pakiecie</span>
+        </div>
+        <div class="reco-reason">
+          <div class="reco-reason-icon">✦</div>
+          <span>Shopify POS — gotowa integracja 2&nbsp;sklepów stacjonarnych w&nbsp;jednym panelu</span>
+        </div>
+        <div class="reco-reason">
+          <div class="reco-reason-icon">✦</div>
+          <span>Natywna obsługa Przelewy24, PayU, BLIK oraz InPost</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="reco-block reveal" style="opacity: 0.75;">
+      <h3>WooCommerce — alternatywa</h3>
+      <p>Solidna opcja jeśli priorytetem jest pełna kontrola nad kodem i&nbsp;niższy koszt wejścia. Wymaga natomiast regularnego utrzymania technicznego (aktualizacje, hosting, bezpieczeństwo), co generuje koszty operacyjne w&nbsp;dłuższej perspektywie. Idealny jeśli planujecie Państwo bardzo zaawansowane customizacje.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ ZAKRES PRAC ═══════ -->
+<section>
+  <div class="container">
+    <div class="section-label"><span>02</span> Zakres prac</div>
+    <h2 class="reveal">Co obejmuje <em>wdrożenie</em></h2>
+    <p class="section-intro reveal">Pełny zakres prac od doboru szablonu, przez konfigurację techniczną, po przeszkolenie Państwa zespołu z&nbsp;obsługi panelu.</p>
+
+    <div class="scope-grid">
+      <div class="scope-card featured reveal">
+        <div class="scope-num">01</div>
+        <h4>Wdrożenie sklepu & szablon premium</h4>
+        <p>Konfiguracja wybranej platformy, dobór i&nbsp;wdrożenie szablonu premium dopasowanego do branży jubilerskiej. Personalizacja kolorystyki, typografii, układu strony głównej, stron kategorii i&nbsp;kart produktów — tak aby całość oddawała charakter Państwa marki.</p>
+      </div>
+      <div class="scope-card reveal">
+        <div class="scope-num">02</div>
+        <h4>Import 400–500 produktów</h4>
+        <p>Pełna konfiguracja katalogu: import danych, przypisanie wariantów (rozmiary, próby kruszcu), optymalizacja zdjęć i&nbsp;opisów produktów.</p>
+      </div>
+      <div class="scope-card reveal">
+        <div class="scope-num">03</div>
+        <h4>Płatności & dostawy</h4>
+        <p>Konfiguracja Przelewy24 / PayU z&nbsp;obsługą BLIK. Integracja InPost (Paczkomaty + kurier), konfiguracja stref i&nbsp;stawek dostawy.</p>
+      </div>
+      <div class="scope-card reveal">
+        <div class="scope-num">04</div>
+        <h4>SEO na start</h4>
+        <p>Struktura URL, meta tagi, dane strukturalne (Schema.org dla produktów), sitemap, integracja Google Search Console i&nbsp;Analytics 4.</p>
+      </div>
+      <div class="scope-card reveal">
+        <div class="scope-num">05</div>
+        <h4>Optymalizacja mobile</h4>
+        <p>Pełna responsywność, optymalizacja szybkości ładowania, testy na różnych urządzeniach. Priorytet: mobilne doświadczenie zakupowe.</p>
+      </div>
+      <div class="scope-card reveal">
+        <div class="scope-num">06</div>
+        <h4>Szkolenie z obsługi</h4>
+        <p>Sesja szkoleniowa (1–2h online/stacjonarnie): zarządzanie produktami, realizacja zamówień, podstawowe edycje treści. Dokumentacja w&nbsp;formie przewodnika.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ BRANŻA JUBILERSKA ═══════ -->
+<section>
+  <div class="container">
+    <div class="section-label"><span>03</span> Funkcje branżowe</div>
+    <h2 class="reveal">Detale, które mają <em>znaczenie</em></h2>
+    <p class="section-intro reveal">Sklep jubilerski wymaga rozwiązań szytych na miarę branży — od zaawansowanej wariantowości po personalizację produktów.</p>
+
+    <div class="jewel-features">
+      <div class="jewel-feature reveal">
+        <div class="jewel-icon">◇</div>
+        <h4>Wariantowość produktów</h4>
+        <p>Konfiguracja wariantów per produkt: rozmiary pierścionków (tabela rozmiarów z&nbsp;poradnikiem), próby kruszcu (333, 375, 585), kolory złota, kamienie szlachetne. Każdy wariant z&nbsp;osobną ceną i&nbsp;stanem magazynowym.</p>
+      </div>
+      <div class="jewel-feature reveal">
+        <div class="jewel-icon">✎</div>
+        <h4>Moduł „Dodaj grawer"</h4>
+        <p>Opcjonalny moduł personalizacji produktów — pole tekstowe na grawer z&nbsp;podglądem, walidacją długości tekstu i&nbsp;doliczeniem kosztu usługi. Realizacja przez dedykowaną aplikację lub custom field.</p>
+      </div>
+      <div class="jewel-feature reveal">
+        <div class="jewel-icon">⟐</div>
+        <h4>Przyszła integracja POS</h4>
+        <p>Architektura gotowa na integrację stanów magazynowych z&nbsp;2&nbsp;sklepami stacjonarnymi. Shopify POS umożliwia synchronizację w&nbsp;czasie rzeczywistym — wdrożenie możliwe jako kolejny etap.</p>
+      </div>
+      <div class="jewel-feature reveal">
+        <div class="jewel-icon">❖</div>
+        <h4>Gotowość do skalowania</h4>
+        <p>Struktura sklepu projektowana z&nbsp;myślą o&nbsp;rozbudowie: programy lojalnościowe, cross-selling, newsletter z&nbsp;segmentacją, przyszła integracja z&nbsp;marketplace'ami.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ HARMONOGRAM ═══════ -->
+<section>
+  <div class="container">
+    <div class="section-label"><span>04</span> Harmonogram</div>
+    <h2 class="reveal">Szacowany czas: <em>5–7 tygodni</em></h2>
+    <p class="section-intro reveal">Harmonogram zakłada sprawną współpracę po obu stronach — dostarczenie materiałów (zdjęcia, opisy, logo) oraz feedback w&nbsp;ustalonych terminach.</p>
+
+    <div class="timeline reveal">
+      <div class="timeline-item active">
+        <div class="timeline-week">Tydzień 1</div>
+        <h4>Kick-off & setup</h4>
+        <p>Założenie konta, dobór i&nbsp;zakup szablonu, konfiguracja domeny, ustalenie struktury kategorii i&nbsp;nawigacji. Brief kreatywny.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-week">Tydzień 2–3</div>
+        <h4>Personalizacja szablonu & import produktów</h4>
+        <p>Customizacja wyglądu, konfiguracja wariantów, import katalogu produktów, przygotowanie stron informacyjnych (regulamin, polityka prywatności, o&nbsp;nas).</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-week">Tydzień 4</div>
+        <h4>Płatności, dostawy, SEO</h4>
+        <p>Konfiguracja bramek płatności, metod dostawy, podstawowa optymalizacja SEO, wdrożenie modułu graweru (opcjonalnie).</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-week">Tydzień 5–6</div>
+        <h4>Testy & poprawki</h4>
+        <p>Testy funkcjonalne (zamówienia, płatności, mobile), testy wydajności, poprawki wizualne, feedback rounds.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-week">Tydzień 6–7</div>
+        <h4>Go-live & szkolenie</h4>
+        <p>Publikacja sklepu, sesja szkoleniowa, przekazanie dokumentacji, 14 dni wsparcia po wdrożeniu.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ WYCENA ═══════ -->
+<section>
+  <div class="container">
+    <div class="section-label"><span>05</span> Wycena</div>
+    <h2 class="reveal">Inwestycja w <em>profesjonalizm</em></h2>
+    <p class="section-intro reveal">Dwa warianty cenowe — oba obejmują pełen zakres podstawowy. Wariant rozszerzony zawiera dodatkowe funkcje branżowe i&nbsp;rozbudowaną konfigurację.</p>
+
+    <div class="pricing-container">
+      <div class="price-card reveal">
+        <div class="price-tier">Wariant podstawowy</div>
+        <div class="price-name">Essential</div>
+        <div class="price-amount">6 500 – 8 500 <span>PLN netto</span></div>
+        <div class="price-note">Pełne wdrożenie sklepu bez modułów dodatkowych</div>
+        <ul class="price-features">
+          <li>Wdrożenie Shopify + szablon premium</li>
+          <li>Import do 500 produktów z wariantami</li>
+          <li>Konfiguracja płatności (Przelewy24 / PayU / BLIK)</li>
+          <li>Konfiguracja dostaw (InPost + kurier)</li>
+          <li>Podstawowa konfiguracja SEO</li>
+          <li>Optymalizacja mobile</li>
+          <li>Szkolenie z obsługi panelu (1h)</li>
+          <li>7 dni wsparcia po uruchomieniu</li>
+        </ul>
+      </div>
+
+      <div class="price-card recommended reveal">
+        <div class="price-tier">Wariant rozszerzony</div>
+        <div class="price-name">Premium</div>
+        <div class="price-amount">9 500 – 13 000 <span>PLN netto</span></div>
+        <div class="price-note">Pełne wdrożenie + funkcje jubilerskie + rozbudowa</div>
+        <ul class="price-features">
+          <li>Wszystko z wariantu Essential</li>
+          <li>Rozbudowana personalizacja szablonu</li>
+          <li>Moduł „Dodaj grawer" z wyceną</li>
+          <li>Tabela rozmiarów z poradnikiem doboru</li>
+          <li>Rozbudowane SEO (Schema.org, opisy kategorii)</li>
+          <li>Przygotowanie pod integrację POS</li>
+          <li>Szkolenie rozszerzone (2h + dokumentacja)</li>
+          <li>14 dni wsparcia po uruchomieniu</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="margin-top: 2rem; padding: 1.5rem; border: 1px solid var(--border); border-radius: 10px; background: var(--bg-card);" class="reveal">
+      <p style="font-size: 0.82rem; color: var(--text-secondary);">
+        <strong style="color: var(--text-primary);">Uwaga:</strong> Powyższe kwoty nie obejmują kosztu szablonu Shopify (jednorazowo ~$150–380), abonamentu Shopify (od ~$36/mies.) ani ewentualnych płatnych aplikacji. Dokładna wycena po rozmowie i&nbsp;ustaleniu szczegółowego zakresu.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ CTA ═══════ -->
+<section class="cta-section">
+  <div class="container">
+    <div class="diamond-divider"><span>◆</span></div>
+    <h2 class="reveal" style="font-size: clamp(2rem, 4vw, 2.8rem);">Zacznijmy <em>rozmowę</em></h2>
+    <p class="reveal">Chętnie omówię szczegóły projektu i&nbsp;dopasuję ofertę do Państwa potrzeb.<br>Zapraszam do kontaktu — odpowiadam w&nbsp;ciągu 24h.</p>
+    <div class="cta-buttons reveal">
+      <a href="mailto:kontakt@oskarminor.pl" class="btn btn-gold">kontakt@oskarminor.pl</a>
+      <a href="https://oskarminor.pl" class="btn btn-outline" target="_blank">oskarminor.pl →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>© 2026 oskarminor.pl — Oferta poufna, przygotowana indywidualnie.<br>Dokument ważny 30 dni od daty wystawienia.</p>
+  </div>
+</footer>
+
+<script>
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
